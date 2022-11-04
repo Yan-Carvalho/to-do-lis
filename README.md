@@ -26,3 +26,5 @@ Foi utilizado a linguagem de programação **Javascript** para o processamento d
 
 Ao baixar o arquivo zip ou clonar este repositório na sua máquina não se esqueça de abrir o seu terminal e digitar o comando `npm i` para que todas as dependências necessárias sejam baixadas.
 
+#DEPLOY
+https://todolist-yan.herokuapp.com/
