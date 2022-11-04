@@ -48,7 +48,7 @@ const createTask = async (req, res) => {
 const getById = async (req, res) => {
   try {
     const tasksList = await Task.find();
-    if ((req.params.method = "update")) {
+    if (req.params.method == "update") {
       const task = await Task.findOne({ _id: req.params.id });
       res.render("index", { task, taskDelete: null, tasksList, message, type });
     } else {
@@ -65,7 +65,7 @@ const getById = async (req, res) => {
 const updateOneTask = async (req, res) => {
   try {
     const task = req.body;
-    await Task.updateOne({ _id: req.param.id }, task);
+    await Task.updateOne({ _id: req.params.id }, task);
     message = "Tarefa atualizada";
     type = "success";
     res.redirect("/");
@@ -78,8 +78,8 @@ const updateOneTask = async (req, res) => {
 //task delete
 const deleteOneTask = async (req, res) => {
   try {
-    await Task.deleteOne({ _id: req.param.id });
-    message = "Tarefa apagada";
+    await Task.deleteOne({ _id: req.params.id });
+    message = "Tarefa apagada com sucesso!";
     type = "success";
     res.redirect("/");
   } catch (err) {
@@ -92,7 +92,8 @@ const deleteOneTask = async (req, res) => {
 const taskCheck = async (req, res) => {
   try {
     const task = await Task.findOne({ _id: req.params.id });
-    task.check ? (task.check = false) : (task.check = true);
+    task.check ? task.check = false : task.check = true;
+    await Task.updateOne({ _id: req.params.id }, task);
     res.redirect("/");
   } catch (err) {
     res.status(500).send({ error: err.message });

@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-    <title>To Di List</title>
+    <title>To Do List</title>
 </head>
+
 <body>
-    
+
     <% if (message != "") {%>
         <%- include('./components/messages', {message: message, type: type})  %>
     <% } %>
 
     <header>
+
         <% if (task==null) { %>
             <%- include('./components/form', {titleForm: "TO DO LIST", action: "create", value: "", idBtn: "addButton", nameBtn: "Adicionar"})%>
         <% } else { %>
             <%- include('./components/form', {titleForm: "EDITAR TAREFA", action: `updateOne/${task._id}`, value: task.task, idBtn: "updateButton", nameBtn: "Atualizar"}) %>
         <% } %>
+
     </header>
 
     <section id="tasks">
@@ -41,9 +45,11 @@
     </section>
 
     <% if (taskDelete !=null) { %>
-        <%- include('./components/modalDel', {task: taskDelete})  %>
+        <%- include('./components/modalDeL', {task: taskDelete})  %>
     <% } %>
 
-    <script src="script.js"></script>
+
+            <script src="script.js"></script>
 </body>
+
 </html>
